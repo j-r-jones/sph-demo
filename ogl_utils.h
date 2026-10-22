@@ -25,13 +25,18 @@ THE SOFTWARE.
 #ifndef OGL_UTILS_H
 #define OGL_UTILS_H
 
-#ifdef GLFW
+// Graphics backend selection:
+//   GLFW - desktop build, GLFW + desktop OpenGL (makefile_linux, makefile_macos)
+//   DRM  - EGL + GBM + DRM/KMS with OpenGL ES 2.0 (Raspberry Pi, makefile_pi)
+#if defined(GLFW)
   #include "glfw_utils.h"
-#else
+#elif defined(DRM)
   #include "egl_utils.h"
+#else
+  #error "No graphics backend selected: define GLFW (desktop) or DRM (Raspberry Pi / KMS)"
 #endif
 
-inline void check();
+void check();
 void showlog(GLint shader);
 void show_program_log(GLuint program);
 void compile_shader(GLuint shader, const char *file_name);

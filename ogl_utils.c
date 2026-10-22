@@ -28,7 +28,7 @@ THE SOFTWARE.
 #include <stdlib.h>
 #include "ogl_utils.h"
 
-inline void check()
+void check()
 {
     GLenum err = glGetError();
     if(err != GL_NO_ERROR) {
