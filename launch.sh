@@ -29,7 +29,7 @@ n_hosts=$(wc -l .hosts|gawk '{print $1 * 2}')
 
 echo "Launching on $n_hosts nodes"
 
-/usr/lib64/openmpi/bin/mpirun -np $n_hosts --hostfile .hosts /export/alfthan/SPH/bin/sph.out
+/usr/lib64/openmpi/bin/mpirun -np $n_hosts --hostfile .hosts /export/alfthan/SPH/bin/sph
 
 for i in ${HOSTLIST[@]}; do
     #turn off blink
